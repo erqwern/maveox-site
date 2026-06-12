@@ -369,64 +369,64 @@
     </div>
   </section>
 
-  <!-- Contact teaser -->
-  <section class="border-t border-white/10 bg-[#0a0a0a]">
-    <div class="max-w-4xl mx-auto px-6 py-20">
-      <div class="max-w-2xl mb-10">
-        <div class="uppercase tracking-[2.5px] text-xs text-white/50 mb-3">ГОТОВЫ К ПРОЕКТУ?</div>
-        <h2 class="text-5xl tracking-[-2px] font-semibold leading-none">Напишите мне</h2>
-        <p class="mt-4 text-white/60">Коротко опишите задачу — отвечу быстро. Или сразу в Telegram.</p>
-      </div>
-      
-      <!-- Netlify Form -->
-<form 
-  id="contact-form" 
-  name="contact" 
-  method="POST" 
-  data-netlify="true" 
-  netlify-honeypot="bot-field"
-  class="space-y-4 max-w-2xl mx-auto" 
-  onsubmit="handleFormSubmit(event)">
-
-  <!-- Скрытые поля для Netlify -->
-  <input type="hidden" name="form-name" value="contact">
-  <p hidden>
-    <label>Не заполняйте это поле: <input name="bot-field"></label>
-  </p>
-
-  <div class="grid sm:grid-cols-2 gap-4">
-    <input 
-      type="text" 
-      id="name" 
-      name="name" 
-      placeholder="Ваше имя" 
-      required
-      class="w-full bg-[#111] border border-white/30 focus:border-white/50 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 outline-none">
-  </div>
-
-  <textarea 
-    id="message" 
-    name="message" 
-    placeholder="Расскажите о проекте: что нужно сделать, сроки, бюджет если есть..." 
-    required
-    class="w-full min-h-[128px] bg-[#111] border border-white/30 focus:border-white/50 rounded-3xl px-6 py-4 text-white placeholder:text-white/40 outline-none resize-y"></textarea>
-
-  <div class="flex flex-col sm:flex-row gap-3 pt-2">
-    <button 
-      type="submit"
-      class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 bg-white text-black font-semibold px-10 py-4 rounded-full hover:bg-zinc-200 transition">
-      Отправить заявку
-    </button>
-
-    <a href="https://t.me/erqwern" target="_blank"
-       class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 border border-white/30 hover:border-white/50 text-white font-medium px-8 py-4 rounded-full transition">
-      Написать в Telegram
-    </a>
-  </div>
-
-</form>
+ <!-- Contact teaser -->
+<section class="border-t border-white/10 bg-[#0a0a0a] py-20">
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    
+    <div class="text-center mb-12">
+      <p class="uppercase tracking-[2.5px] text-xs text-white/50 mb-3">ГОТОВЫ К ПРОЕКТУ?</p>
+      <h2 class="text-5xl font-semibold tracking-tight">Напишите мне</h2>
+      <p class="mt-4 text-white/70 text-lg">Коротко опишите задачу — отвечу быстро. Или сразу в Telegram.</p>
     </div>
-  </section>
+
+    <!-- Netlify Form -->
+    <form 
+      name="contact" 
+      method="POST" 
+      data-netlify="true" 
+      netlify-honeypot="bot-field"
+      class="max-w-2xl mx-auto space-y-6">
+
+      <input type="hidden" name="form-name" value="contact">
+      <p hidden>
+        <label>Не заполняйте: <input name="bot-field"></label>
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Ваше имя" 
+          required
+          class="bg-zinc-900 border border-white/20 focus:border-white/50 rounded-2xl px-7 py-4 text-white placeholder:text-white/40 outline-none transition">
+      </div>
+
+      <textarea 
+        name="message" 
+        placeholder="Расскажите о проекте: что нужно сделать, сроки, бюджет если есть..." 
+        required
+        class="w-full min-h-[140px] bg-zinc-900 border border-white/20 focus:border-white/50 rounded-3xl px-7 py-5 text-white placeholder:text-white/40 outline-none resize-y transition"></textarea>
+
+      <div class="flex flex-col sm:flex-row gap-4 pt-4">
+        <button 
+          type="submit"
+          class="flex-1 bg-white text-black font-semibold py-4 rounded-full hover:bg-zinc-100 transition text-lg">
+          Отправить заявку
+        </button>
+
+        <a href="https://t.me/erqwern" target="_blank"
+           class="flex-1 border border-white/30 hover:border-white/60 text-white font-medium py-4 rounded-full transition text-center text-lg">
+          Написать в Telegram
+        </a>
+      </div>
+    </form>
+
+    <p class="text-center text-white/40 text-sm mt-8">
+      Обычно отвечаю в течение 1–2 дней. Для срочного — Telegram.
+    </p>
+
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="border-t border-white/10 bg-black/60 mt-auto">
