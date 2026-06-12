@@ -378,33 +378,53 @@
         <p class="mt-4 text-white/60">Коротко опишите задачу — отвечу быстро. Или сразу в Telegram.</p>
       </div>
       
-      <form id="contact-form" class="space-y-4 max-w-2xl" onsubmit="handleFormSubmit(event)">
-        <div class="grid sm:grid-cols-2 gap-4">
-          <input type="text" id="name" placeholder="Ваше имя" required
-                 class="w-full bg-[#111] border border-white/10 focus:border-white/30 rounded-2xl px-6 py-4 text-base placeholder:text-white/40 outline-none transition">
-          <a href="https://t.me/ercqwern" target="_blank" 
-             class="hidden sm:flex items-center justify-center gap-2 rounded-2xl border border-white/15 hover:bg-white/5 text-sm px-6 transition">
-            Написать в Telegram 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L4 14h5l1.5 4 5.5-8H14.5z"></path></svg>
-          </a>
-        </div>
-        
-        <textarea id="message" placeholder="Расскажите о проекте: что нужно сделать, сроки, бюджет если есть..." required
-                  class="w-full min-h-[128px] bg-[#111] border border-white/10 focus:border-white/30 rounded-3xl px-6 py-5 text-base placeholder:text-white/40 outline-none resize-y transition"></textarea>
-        
-        <div class="flex flex-col sm:flex-row gap-3 pt-1">
-          <button type="submit" 
-                  class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 h-14 px-10 rounded-full bg-white text-black font-medium tracking-[-0.1px] active:scale-[0.985] transition">
-            Отправить заявку
-          </button>
-          <a href="https://t.me/ercqwern" target="_blank" 
-             class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 h-14 px-8 rounded-full border border-white/15 hover:bg-white/5 text-sm transition">
-            Telegram 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L4 14h5l1.5 4 5.5-8H14.5z"></path></svg>
-          </a>
-        </div>
-        <p class="text-[11px] text-white/40 pt-1">Обычно отвечаю в течение 1–2 дней. Для срочного — Telegram.</p>
-      </form>
+      <!-- Netlify Form -->
+<form 
+  id="contact-form" 
+  name="contact" 
+  method="POST" 
+  data-netlify="true" 
+  netlify-honeypot="bot-field"
+  class="space-y-4 max-w-2xl mx-auto" 
+  onsubmit="handleFormSubmit(event)">
+
+  <!-- Скрытые поля для Netlify -->
+  <input type="hidden" name="form-name" value="contact">
+  <p hidden>
+    <label>Не заполняйте это поле: <input name="bot-field"></label>
+  </p>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      placeholder="Ваше имя" 
+      required
+      class="w-full bg-[#111] border border-white/30 focus:border-white/50 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 outline-none">
+  </div>
+
+  <textarea 
+    id="message" 
+    name="message" 
+    placeholder="Расскажите о проекте: что нужно сделать, сроки, бюджет если есть..." 
+    required
+    class="w-full min-h-[128px] bg-[#111] border border-white/30 focus:border-white/50 rounded-3xl px-6 py-4 text-white placeholder:text-white/40 outline-none resize-y"></textarea>
+
+  <div class="flex flex-col sm:flex-row gap-3 pt-2">
+    <button 
+      type="submit"
+      class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 bg-white text-black font-semibold px-10 py-4 rounded-full hover:bg-zinc-200 transition">
+      Отправить заявку
+    </button>
+
+    <a href="https://t.me/erqwern" target="_blank"
+       class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 border border-white/30 hover:border-white/50 text-white font-medium px-8 py-4 rounded-full transition">
+      Написать в Telegram
+    </a>
+  </div>
+
+</form>
     </div>
   </section>
 
