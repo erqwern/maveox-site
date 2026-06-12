@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Михаил Матвеев — Mavoex</title>
+  <meta name="description" content="В 16 лет создаю современные сайты, продукты, цифровые миры и художественные формы. Основатель Mavoex Labs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../public/favicon.ico">
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+    }
+    
+    .font-mono {
+      font-family: var(--font-mono);
+    }
+    
+    .card {
+      background: #161616;
+      border: 1px solid #222222;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                  border-color 0.4s ease,
+                  background-color 0.4s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #333333;
+      background: #1a1a1a;
+    }
+    
+    .tracking-premium {
+      letter-spacing: -0.025em;
+    }
+    
+    .nav-link {
+      transition: color 0.15s ease;
+    }
+    
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    #role-text {
+      transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), 
+                  transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #scroll-indicator {
+      transition: opacity 2.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .section-title {
+      font-feature-settings: "tnum", "ss01";
+      letter-spacing: -0.025em;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+  <!-- Startup Animation -->
+  <div id="startup" class="fixed inset-0 z-[9999] bg-[#0a0a0a] text-[#00ff9f] font-mono flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,159,0.035)_50%)] bg-[length:100%_3.5px] pointer-events-none"></div>
+    
+    <div class="relative w-full max-w-[720px] px-8 select-none">
+      <div class="text-[11px] tracking-[3.5px] text-[#00ff9f]/60 mb-8 font-mono">
+        MAVOEX LABORATORIES — SECURE BOOT
+      </div>
+      
+      <div id="terminal-lines" class="space-y-[3px] text-sm leading-[1.45] tracking-[-0.2px]"></div>
+      
+      <div id="terminal-status" class="mt-10 text-[10px] tracking-[2px] text-[#00ff9f]/40">
+        INITIALIZING...
+      </div>
+    </div>
+    
+    <div class="absolute bottom-10 right-10 text-[120px] font-mono font-bold text-[#00ff9f] opacity-[0.035] tracking-[-12px] pointer-events-none select-none">
+      M
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14 md:h-16">
+      <a href="index.html" class="font-mono text-sm md:text-[13px] tracking-[3px] text-white/90 hover:text-white transition-colors">MATVEEV.DEV</a>
+      
+      <!-- Desktop -->
+      <div class="hidden md:flex items-center gap-9 text-sm">
+        <a href="about.html" class="text-white/70 hover:text-white transition-colors nav-link">Обо мне</a>
+        <a href="services.html" class="text-white/70 hover:text-white transition-colors nav-link">Услуги</a>
+        <a href="portfolio.html" class="text-white/70 hover:text-white transition-colors nav-link">Портфолио</a>
+        <a href="labs.html" class="text-white/70 hover:text-white transition-colors nav-link">Labs</a>
+        <a href="contact.html" class="text-white/70 hover:text-white transition-colors nav-link">Связь</a>
+      </div>
+      
+      <a href="labs.html" class="hidden md:block text-sm px-5 py-2 rounded-full border border-white/20 hover:bg-white/5 transition-all active:scale-[0.985]">
+        Войти в Maveox Labs
+      </a>
+      
+      <!-- Mobile -->
+      <button id="mobile-menu-btn" class="md:hidden text-white/80 hover:text-white p-2 -mr-2" aria-label="Меню">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-black/95">
+      <div class="flex flex-col px-5 py-6 gap-5 text-lg">
+        <a href="about.html" class="text-white/80 hover:text-white py-1">Обо мне</a>
+        <a href="services.html" class="text-white/80 hover:text-white py-1">Услуги</a>
+        <a href="portfolio.html" class="text-white/80 hover:text-white py-1">Портфолио</a>
+        <a href="labs.html" class="text-white/80 hover:text-white py-1">Labs</a>
+        <a href="contact.html" class="text-white/80 hover:text-white py-1">Связь</a>
+        
+        <div class="pt-4 border-t border-white/10">
+          <a href="labs.html" class="block w-full text-center py-3 rounded-full border border-white/20 text-sm hover:bg-white/5">
+            Войти в Maveox Labs
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="h-14 md:h-16"></div>
+
+  <!-- HERO -->
+  <main class="relative min-h-[100dvh] flex items-center justify-center pt-16 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(#1f1f1f_0.7px,transparent_1px)] bg-[length:4px_4px] opacity-50"></div>
+    
+    <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl">
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/5 text-[10px] tracking-[3px] text-white/50 font-mono mb-8">
+        16 ЛЕТ · ОСНОВАТЕЛЬ MAVEOX LABS
+      </div>
+      
+      <h1 class="text-6xl sm:text-7xl md:text-[86px] font-semibold tracking-[-4.5px] md:tracking-[-5.5px] leading-[0.9] mb-4">
+        Михаил Матвеев
+      </h1>
+      
+      <div class="h-10 md:h-12 mb-3 flex items-center justify-center">
+        <div id="role-text" class="text-2xl sm:text-3xl md:text-[34px] text-white/70 tracking-[-0.6px] md:tracking-[-0.8px]">
+          Создаю сайты на вынос
+        </div>
+      </div>
+      
+      <div class="text-xs text-white/40 tracking-[4px] font-mono mt-1 mb-10">MAVOEX.SITE</div>
+      
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <a href="https://t.me/ercqwern" target="_blank" 
+           class="group inline-flex items-center justify-center gap-3 px-8 h-14 rounded-full bg-white text-black text-base font-medium tracking-[-0.2px] hover:bg-zinc-100 active:scale-[0.985] transition-all">
+          Написать в Telegram
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition"><path d="M14.5 4h-5L4 14h5l1.5 4 5.5-8H14.5z"></path></svg>
+        </a>
+        <a href="#projects" 
+           class="group inline-flex items-center justify-center gap-3 px-8 h-14 rounded-full border border-white/20 text-base hover:bg-white/5 active:scale-[0.985] transition-all">
+          Смотреть работы 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+    
+    <div id="scroll-indicator" class="absolute bottom-12 left-1/2 -translate-x-1/2 text-[10px] tracking-[3px] text-white/40 font-mono">
+      SCROLL TO EXPLORE
+    </div>
+  </main>
+
+  <!-- Intro -->
+  <section class="max-w-3xl mx-auto px-6 py-20 text-center border-t border-white/10">
+    <p class="text-2xl sm:text-3xl md:text-[32px] leading-tight tracking-[-0.7px] text-white/90">
+      В 16 лет создаю вещи, которых ещё нет.<br>Сайты, продукты, истории и новые формы.
+    </p>
+    <p class="mt-6 text-white/55 max-w-sm mx-auto">
+      Основатель Maveox Labs. Работаю на стыке технологий, дизайна и литературы.
+    </p>
+  </section>
+
+  <!-- Обо мне -->
+  <section class="max-w-5xl mx-auto px-6 pb-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+      <div>
+        <div class="text-xs tracking-[3px] text-white/50 mb-2">КТО Я</div>
+        <h2 class="text-5xl tracking-[-2.5px] font-semibold">Обо мне</h2>
+      </div>
+      <a href="about.html" class="text-sm text-white/60 hover:text-white flex items-center gap-1 group">
+        Подробнее обо мне и Labs 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+    
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-8 text-[15px] text-white/80 leading-relaxed">
+      <div class="md:col-span-7">
+        <p class="mb-5">
+          Мне 16. Я — полимат и основатель Mavoex Labs. Создаю сайты на вынос, продукты, цифровые миры и современные художественные формы.
+        </p>
+        <p>
+          Не просто «подросток, который кодит». Делаю работу уровня серьёзных студий, но с личным фокусом, скоростью и вниманием к деталям одного человека.
+        </p>
+      </div>
+      <div class="md:col-span-5 text-white/55">
+        Полное имя: Михаил Матвеев<br>
+        Возраст: 16 лет<br>
+        Фокус 2026: книги, инструменты, визуальный язык и клиентские проекты.
+      </div>
+    </div>
+  </section>
+
+  <!-- Проекты -->
+  <section id="projects" class="border-t border-white/10 bg-[#0a0a0a]">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <div class="uppercase tracking-[2.5px] text-xs text-white/50 mb-2">ИЗБРАННОЕ</div>
+          <h2 class="text-5xl tracking-[-2.2px] font-semibold">Проекты и работы</h2>
+        </div>
+        <a href="portfolio.html" class="hidden md:flex items-center gap-2 text-sm text-white/70 hover:text-white">
+          Всё портфолио 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Project cards -->
+        <a href="press.html" class="group block">
+          <div class="card overflow-hidden rounded-3xl p-8 md:p-10 h-full flex flex-col">
+            <div class="mb-8 -mx-2 overflow-hidden rounded-2xl border border-white/10 relative h-48 md:h-56">
+              <img src="images/books/book1-seed.png" alt="Семя" class="object-cover opacity-90 group-hover:scale-[1.015] transition-transform duration-700 w-full h-full">
+            </div>
+            <div class="mt-auto">
+              <div class="font-semibold text-3xl tracking-[-1.5px] mb-1 group-hover:text-[#3b82f6] transition-colors">Семя</div>
+              <div class="text-white/50 text-sm mb-4">The Aether Seed • Книга 1</div>
+              <p class="text-white/70 text-[15px] leading-snug">Художественно-философский роман. Часть большого цикла «Эфир».</p>
+            </div>
+            <div class="mt-8 text-xs text-white/40 flex items-center gap-1 group-hover:gap-2 transition-all">
+              Смотреть проект 
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </div>
+          </div>
+        </a>
+        
+        <a href="press.html" class="group block">
+          <div class="card overflow-hidden rounded-3xl p-8 md:p-10 h-full flex flex-col">
+            <div class="mb-8 -mx-2 overflow-hidden rounded-2xl border border-white/10 relative h-48 md:h-56">
+              <img src="images/books/book2-fracture.png" alt="Перелом" class="object-cover opacity-90 group-hover:scale-[1.015] transition-transform duration-700 w-full h-full">
+            </div>
+            <div class="mt-auto">
+              <div class="font-semibold text-3xl tracking-[-1.5px] mb-1 group-hover:text-[#3b82f6] transition-colors">Перелом</div>
+              <div class="text-white/50 text-sm mb-4">The Aether Fracture • Книга 2</div>
+              <p class="text-white/70 text-[15px] leading-snug">Продолжение. Глубокий мир, новые вопросы о сознании и будущем.</p>
+            </div>
+            <div class="mt-8 text-xs text-white/40 flex items-center gap-1 group-hover:gap-2 transition-all">
+              Смотреть проект 
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </div>
+          </div>
+        </a>
+        
+        <a href="labs.html" class="group block">
+          <div class="card overflow-hidden rounded-3xl p-8 md:p-10 h-full flex flex-col">
+            <div class="mb-8 -mx-2 overflow-hidden rounded-2xl border border-white/10 relative h-48 md:h-56 bg-[#0a0a0a] flex flex-col items-center justify-center text-center px-6">
+              <div class="text-[#3b82f6] text-[10px] tracking-[4px] font-mono mb-1">ЛАБОРАТОРИЯ</div>
+              <div class="text-4xl font-semibold tracking-[-1.8px] text-white mb-1">Maveox Labs</div>
+              <div class="text-white/70 text-sm mb-2">Моя личная лаборатория</div>
+              <div class="text-white/40 text-[10px] tracking-widest">Центр всех направлений</div>
+            </div>
+            <div class="mt-auto">
+              <div class="font-semibold text-3xl tracking-[-1.5px] mb-1 group-hover:text-[#3b82f6] transition-colors">Maveox Labs</div>
+              <div class="text-white/50 text-sm mb-4">Бренд-платформа и лаборатория</div>
+              <p class="text-white/70 text-[15px] leading-snug">Центр всех направлений: сайты, дизайн, исследования, литература.</p>
+            </div>
+            <div class="mt-8 text-xs text-white/40 flex items-center gap-1 group-hover:gap-2 transition-all">
+              Смотреть проект 
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </div>
+          </div>
+        </a>
+        
+        <a href="press.html" class="group block">
+          <div class="card overflow-hidden rounded-3xl p-8 md:p-10 h-full flex flex-col">
+            <div class="mb-8 -mx-2 overflow-hidden rounded-2xl border border-white/10 relative h-48 md:h-56">
+              <img src="images/books/book3-ascension.png" alt="Вознесение" class="object-cover opacity-90 group-hover:scale-[1.015] transition-transform duration-700 w-full h-full">
+            </div>
+            <div class="mt-auto">
+              <div class="font-semibold text-3xl tracking-[-1.5px] mb-1 group-hover:text-[#3b82f6] transition-colors">Вознесение + Колыбель</div>
+              <div class="text-white/50 text-sm mb-4">Книги 3 и spin-off</div>
+              <p class="text-white/70 text-[15px] leading-snug">Завершение трилогии и параллельная история. Работа над визуальным языком серии.</p>
+            </div>
+            <div class="mt-8 text-xs text-white/40 flex items-center gap-1 group-hover:gap-2 transition-all">
+              Смотреть проект 
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+      
+      <div class="mt-6 md:hidden">
+        <a href="portfolio.html" class="text-sm text-white/70 hover:text-white flex items-center gap-1">
+          Всё портфолио 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Услуги -->
+  <section class="max-w-6xl mx-auto px-6 py-20 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      <div>
+        <div class="uppercase tracking-[2.5px] text-xs text-white/50 mb-2">ЧТО ПРЕДЛАГАЮ</div>
+        <h2 class="text-5xl tracking-[-2.2px] font-semibold">Услуги</h2>
+      </div>
+      <a href="services.html" class="text-sm text-white/70 hover:text-white flex items-center gap-2 group">
+        Подробно обо всех услугах 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card rounded-3xl p-8 flex flex-col group">
+        <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 mb-6 group-hover:bg-white/10 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="font-semibold text-2xl tracking-[-0.6px] mb-3">Сайты под ключ</div>
+        <p class="text-white/70 text-[15px] leading-relaxed flex-1">Полноценные современные сайты от стратегии до запуска. Корпоративные, лендинги, сложные интерфейсы.</p>
+        <a href="services.html" class="mt-8 inline-flex text-xs tracking-widest text-white/50 hover:text-white items-center gap-1.5">
+          УЗНАТЬ ПОДРОБНЕЕ 
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+      
+      <div class="card rounded-3xl p-8 flex flex-col group">
+        <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 mb-6 group-hover:bg-white/10 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <div class="font-semibold text-2xl tracking-[-0.6px] mb-3">Веб-дизайн и визуалы</div>
+        <p class="text-white/70 text-[15px] leading-relaxed flex-1">Премиальный дизайн, сильная типографика, уникальные ИИ-визуалы и 3D-элементы под проект.</p>
+        <a href="services.html" class="mt-8 inline-flex text-xs tracking-widest text-white/50 hover:text-white items-center gap-1.5">
+          УЗНАТЬ ПОДРОБНЕЕ 
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+      
+      <div class="card rounded-3xl p-8 flex flex-col group">
+        <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 mb-6 group-hover:bg-white/10 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="font-semibold text-2xl tracking-[-0.6px] mb-3">Продуктовое мышление</div>
+        <p class="text-white/70 text-[15px] leading-relaxed flex-1">Исследование, структура, воронки и опыт, которые реально работают на результат.</p>
+        <a href="services.html" class="mt-8 inline-flex text-xs tracking-widest text-white/50 hover:text-white items-center gap-1.5">
+          УЗНАТЬ ПОДРОБНЕЕ 
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+      
+      <div class="card rounded-3xl p-8 flex flex-col group">
+        <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 mb-6 group-hover:bg-white/10 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+        </div>
+        <div class="font-semibold text-2xl tracking-[-0.6px] mb-3">Цифровые миры и эксперименты</div>
+        <p class="text-white/70 text-[15px] leading-relaxed flex-1">AI-инструменты, интерактив, литературные проекты и нестандартные цифровые формы.</p>
+        <a href="services.html" class="mt-8 inline-flex text-xs tracking-widest text-white/50 hover:text-white items-center gap-1.5">
+          УЗНАТЬ ПОДРОБНЕЕ 
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact teaser -->
+  <section class="border-t border-white/10 bg-[#0a0a0a]">
+    <div class="max-w-4xl mx-auto px-6 py-20">
+      <div class="max-w-2xl mb-10">
+        <div class="uppercase tracking-[2.5px] text-xs text-white/50 mb-3">ГОТОВЫ К ПРОЕКТУ?</div>
+        <h2 class="text-5xl tracking-[-2px] font-semibold leading-none">Напишите мне</h2>
+        <p class="mt-4 text-white/60">Коротко опишите задачу — отвечу быстро. Или сразу в Telegram.</p>
+      </div>
+      
+      <form id="contact-form" class="space-y-4 max-w-2xl" onsubmit="handleFormSubmit(event)">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input type="text" id="name" placeholder="Ваше имя" required
+                 class="w-full bg-[#111] border border-white/10 focus:border-white/30 rounded-2xl px-6 py-4 text-base placeholder:text-white/40 outline-none transition">
+          <a href="https://t.me/ercqwern" target="_blank" 
+             class="hidden sm:flex items-center justify-center gap-2 rounded-2xl border border-white/15 hover:bg-white/5 text-sm px-6 transition">
+            Написать в Telegram 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L4 14h5l1.5 4 5.5-8H14.5z"></path></svg>
+          </a>
+        </div>
+        
+        <textarea id="message" placeholder="Расскажите о проекте: что нужно сделать, сроки, бюджет если есть..." required
+                  class="w-full min-h-[128px] bg-[#111] border border-white/10 focus:border-white/30 rounded-3xl px-6 py-5 text-base placeholder:text-white/40 outline-none resize-y transition"></textarea>
+        
+        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+          <button type="submit" 
+                  class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 h-14 px-10 rounded-full bg-white text-black font-medium tracking-[-0.1px] active:scale-[0.985] transition">
+            Отправить заявку
+          </button>
+          <a href="https://t.me/ercqwern" target="_blank" 
+             class="flex-1 sm:flex-none inline-flex items-center justify-center gap-3 h-14 px-8 rounded-full border border-white/15 hover:bg-white/5 text-sm transition">
+            Telegram 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L4 14h5l1.5 4 5.5-8H14.5z"></path></svg>
+          </a>
+        </div>
+        <p class="text-[11px] text-white/40 pt-1">Обычно отвечаю в течение 1–2 дней. Для срочного — Telegram.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-black/60 mt-auto">
+    <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-12 gap-y-12">
+        <div class="md:col-span-5">
+          <div class="font-mono text-xs tracking-[4px] text-white/50 mb-3">MAVOEX</div>
+          <div class="text-2xl font-semibold tracking-[-0.5px] mb-4">Михаил Матвеев</div>
+          <p class="max-w-xs text-white/60 text-[15px] leading-relaxed">
+            16 лет. Создаю сайты, продукты, цифровые миры и современные художественные формы.
+          </p>
+          <a href="https://t.me/ercqwern" target="_blank" 
+             class="mt-6 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors group">
+            Написать в Telegram
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition"><path d="M14.5 4h-5L4 14h5l1.5 4 5.5-8H14.5z"></path></svg>
+          </a>
+        </div>
+        
+        <div class="md:col-span-3">
+          <div class="text-xs tracking-[2px] text-white/50 mb-4">НАВИГАЦИЯ</div>
+          <div class="flex flex-col gap-2.5 text-sm">
+            <a href="about.html" class="text-white/70 hover:text-white transition">Обо мне</a>
+            <a href="services.html" class="text-white/70 hover:text-white transition">Услуги</a>
+            <a href="portfolio.html" class="text-white/70 hover:text-white transition">Портфолио</a>
+            <a href="labs.html" class="text-white/70 hover:text-white transition">Maveox Labs</a>
+            <a href="contact.html" class="text-white/70 hover:text-white transition">Связь</a>
+          </div>
+        </div>
+        
+        <div class="md:col-span-4">
+          <div class="text-xs tracking-[2px] text-white/50 mb-4">КОНТАКТЫ</div>
+          <div class="space-y-3 text-sm">
+            <a href="https://t.me/ercqwern" target="_blank" class="block text-white/70 hover:text-white transition">@ercqwern — Telegram (проекты)</a>
+            <a href="https://github.com/erqwern" target="_blank" class="block text-white/70 hover:text-white transition">github.com/erqwern</a>
+            <div onclick="copyEmail()" class="block text-white/70 hover:text-white transition cursor-pointer">erqwern@gmail.com</div>
+          </div>
+          <div class="mt-8 text-[11px] text-white/40">
+            © <span id="year"></span> Михаил Матвеев · Maveox Labs<br>
+            Готов к серьёзным проектам и collaborations.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple Toast -->
+  <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 border border-white/10 text-white px-6 py-3 rounded-2xl text-sm shadow-xl flex items-center gap-3">
+    <span id="toast-text"></span>
+  </div>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config
+    function initTailwind() {
+      document.documentElement.style.setProperty('--accent', '#3b82f6');
+      
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['var(--font-sans)'],
+              'mono': ['var(--font-mono)']
+            }
+          }
+        }
+      };
+    }
+    
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileBtn.innerHTML = isOpen 
+        ? '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>'
+        : '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+    });
+    
+    // Role cycling
+    const roles = [
+      "сайты на вынос",
+      "продукты и инструменты",
+      "цифровые миры",
+      "современные формы искусства",
+      "продающие цифровые системы"
+    ];
+    let roleIndex = 0;
+    const roleEl = document.getElementById('role-text');
+    
+    setInterval(() => {
+      roleIndex = (roleIndex + 1) % roles.length;
+      roleEl.style.transition = 'opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1)';
+      roleEl.style.opacity = '0';
+      roleEl.style.transform = 'translateY(14px) scale(0.98)';
+      setTimeout(() => {
+        roleEl.textContent = 'Создаю ' + roles[roleIndex];
+        roleEl.style.opacity = '1';
+        roleEl.style.transform = 'translateY(0) scale(1)';
+      }, 15);
+    }, 3000);
+    
+    // Startup Animation
+    const startup = document.getElementById('startup');
+    const linesContainer = document.getElementById('terminal-lines');
+    const statusEl = document.getElementById('terminal-status');
+    
+    const startupSequence = [
+      '[MVOX-16] Mavoex Core System v1.6.0',
+      'Initializing boot sequence...',
+      'Loading personality matrix...',
+      'mavoex initialization...',
+      'Establishing neural link to creative core...',
+      'Decrypting visual language modules...',
+      'Calibrating polymath algorithms...',
+      'System online.',
+      '',
+      'Welcome, Unknown User.',
+      'Access level: user'
+    ];
+    
+    function runStartup() {
+      if (sessionStorage.getItem('mavoex_booted')) {
+        startup.style.display = 'none';
+        return;
+      }
+      
+      let i = 0;
+      const lineDelay = 720;
+      
+      function addLine() {
+        if (i < startupSequence.length) {
+          const div = document.createElement('div');
+          div.className = 'whitespace-pre';
+          div.style.opacity = '0';
+          div.style.transition = 'opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
+          div.textContent = startupSequence[i];
+          linesContainer.appendChild(div);
+          // trigger fade
+          setTimeout(() => {
+            div.style.opacity = '1';
+          }, 10);
+          i++;
+          
+          if (i >= startupSequence.length - 3) {
+            statusEl.textContent = 'SYSTEM READY';
+          }
+          
+          setTimeout(addLine, lineDelay);
+        } else {
+          setTimeout(() => {
+            startup.style.transition = 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1)';
+            startup.style.opacity = '0';
+            
+            setTimeout(() => {
+              startup.style.display = 'none';
+              sessionStorage.setItem('mavoex_booted', 'true');
+            }, 650);
+          }, 900);
+        }
+      }
+      
+      setTimeout(addLine, 180);
+    }
+    
+    // Simple Toast
+    let toastTimeout;
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-text');
+      
+      text.textContent = message;
+      toast.className = `fixed bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 rounded-2xl text-sm shadow-xl flex items-center gap-3 ${isError ? 'bg-red-900 border border-red-500 text-white' : 'bg-zinc-900 border border-white/10 text-white'}`;
+      toast.style.display = 'flex';
+      
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.style.transition = 'opacity 0.2s';
+        toast.style.opacity = '0';
+        setTimeout(() => {
+          toast.style.display = 'none';
+          toast.style.opacity = '1';
+          toast.style.transition = '';
+        }, 200);
+      }, 2800);
+    }
+    
+    // Form handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !message) {
+        showToast('Пожалуйста, заполните имя и сообщение', true);
+        return;
+      }
+      
+      const btns = e.target.querySelectorAll('button');
+      if (btns.length) btns[0].disabled = true;
+      
+      // Simulate send (in real static can integrate Formspree or keep Netlify)
+      setTimeout(() => {
+        showToast('Заявка отправлена. Я свяжусь в течение дня.');
+        e.target.reset();
+        if (btns.length) btns[0].disabled = false;
+      }, 650);
+    }
+    
+    // Copy email
+    function copyEmail() {
+      navigator.clipboard.writeText('erqwern@gmail.com').then(() => {
+        showToast('Почта скопирована в буфер обмена');
+      }).catch(() => {
+        showToast('Не удалось скопировать', true);
+      });
+    }
+    
+    // Scroll indicator pulse
+    function initScrollIndicator() {
+      const indicator = document.getElementById('scroll-indicator');
+      if (indicator) {
+        // Start with low
+        indicator.style.opacity = '0.35';
+        setInterval(() => {
+          indicator.style.opacity = indicator.style.opacity === '0.35' ? '0.85' : '0.35';
+        }, 2600);
+      }
+    }
+    
+    // Init everything
+    function init() {
+      initTailwind();
+      runStartup();
+      initScrollIndicator();
+      
+      // Make copyEmail global for footer
+      window.copyEmail = copyEmail;
+      
+      // Keyboard escape for mobile menu (bonus)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          mobileBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+        }
+      });
+      
+      console.log('%c[Mavoex] Static HTML + Tailwind version loaded', 'color:#666');
+    }
+    
+    window.onload = init;
+  </script>
+</body>
+</html>

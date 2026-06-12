@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обо мне — Михаил Матвеев | Mavoex</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    body { font-family: var(--font-sans); }
+    .font-mono { font-family: var(--font-mono); }
+    .card { 
+      background: #161616; 
+      border: 1px solid #222222; 
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14 md:h-16">
+      <a href="index.html" class="font-mono text-sm md:text-[13px] tracking-[3px] text-white/90 hover:text-white transition-colors">MATVEEV.DEV</a>
+      
+      <div class="hidden md:flex items-center gap-9 text-sm">
+        <a href="about.html" class="text-white/70 hover:text-white transition-colors">Обо мне</a>
+        <a href="services.html" class="text-white/70 hover:text-white transition-colors">Услуги</a>
+        <a href="portfolio.html" class="text-white/70 hover:text-white transition-colors">Портфолио</a>
+        <a href="labs.html" class="text-white/70 hover:text-white transition-colors">Labs</a>
+        <a href="contact.html" class="text-white/70 hover:text-white transition-colors">Связь</a>
+      </div>
+      
+      <a href="labs.html" class="hidden md:block text-sm px-5 py-2 rounded-full border border-white/20 hover:bg-white/5 transition-all">Войти в Maveox Labs</a>
+      
+      <button id="mobile-menu-btn" class="md:hidden text-white/80 hover:text-white p-2 -mr-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-black/95">
+      <div class="flex flex-col px-5 py-6 gap-5 text-lg">
+        <a href="about.html" class="text-white/80 hover:text-white py-1">Обо мне</a>
+        <a href="services.html" class="text-white/80 hover:text-white py-1">Услуги</a>
+        <a href="portfolio.html" class="text-white/80 hover:text-white py-1">Портфолио</a>
+        <a href="labs.html" class="text-white/80 hover:text-white py-1">Labs</a>
+        <a href="contact.html" class="text-white/80 hover:text-white py-1">Связь</a>
+        <div class="pt-4 border-t border-white/10">
+          <a href="labs.html" class="block w-full text-center py-3 rounded-full border border-white/20 text-sm hover:bg-white/5">Войти в Maveox Labs</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="h-14 md:h-16"></div>
+
+  <main class="max-w-5xl mx-auto px-6 pt-20 pb-24">
+    <a href="index.html" class="text-sm text-white/50 hover:text-white flex items-center gap-1 mb-8 group">← На главную</a>
+    
+    <div class="max-w-3xl">
+      <div class="text-xs tracking-[3px] text-white/50 mb-3">ОБО МНЕ</div>
+      <h1 class="text-6xl sm:text-7xl tracking-[-3.5px] font-semibold leading-none mb-6">Михаил Матвеев.<br>Maveox.</h1>
+      <p class="text-2xl tracking-[-0.3px] text-white/80">В 16 лет я полимат. Работаю на стыке технологий, дизайна и литературы. Создаю современные сайты, продукты, цифровые миры и художественные формы.</p>
+    </div>
+    
+    <div class="max-w-5xl mt-16 space-y-16">
+      <div class="grid lg:grid-cols-12 gap-x-12 gap-y-8">
+        <div class="lg:col-span-5">
+          <div class="sticky top-24">
+            <div class="text-xs uppercase tracking-widest text-white/50 mb-2">КТО Я</div>
+            <div class="font-semibold text-4xl tracking-[-1.2px] leading-none">Полимат.<br>16 лет.<br>Maveox Labs.</div>
+          </div>
+        </div>
+        <div class="lg:col-span-7 text-[15px] leading-relaxed text-white/75 space-y-6">
+          <p>Меня зовут Михаил Матвеев. Я занимаюсь веб-разработкой, дизайном, создаю ИИ-визуалы и помогаю проектам и бизнесу получать результат через качественные цифровые продукты.</p>
+          <p>Параллельно я пишу большой художественно-философский цикл «Эфир» — это не просто книги, это способ мышления, который даёт глубину и внимание к деталям во всех остальных проектах.</p>
+          <p>Основал Maveox Labs — личную лабораторию, где пересекаются все направления: сайты и продукты, дизайн, исследования, литература и эксперименты.</p>
+          <p class="text-white/55">Я не просто «веб-разработчик-подросток». Я делаю работу на уровне, который ожидают от серьёзных команд, но с личным подходом, скоростью и честностью одного человека.</p>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-white/10">
+        <div class="text-xs uppercase tracking-[2px] text-white/50 mb-4">ЧЕМ ЗАНИМАЮСЬ</div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="card p-8 rounded-3xl">
+            <div class="font-semibold text-xl tracking-[-0.3px] mb-3">Сайты и цифровые продукты</div>
+            <p class="text-white/70 text-[15px]">От стратегии до запуска. Корпоративные сайты, лендинги, сложные интерфейсы, AI-инструменты.</p>
+          </div>
+          <div class="card p-8 rounded-3xl">
+            <div class="font-semibold text-xl tracking-[-0.3px] mb-3">Дизайн и визуальный язык</div>
+            <p class="text-white/70 text-[15px]">Премиальный веб-дизайн, уникальные визуалы (в т.ч. сгенерированные), типографика и атмосфера.</p>
+          </div>
+          <div class="card p-8 rounded-3xl">
+            <div class="font-semibold text-xl tracking-[-0.3px] mb-3">Литература и исследования</div>
+            <p class="text-white/70 text-[15px]">Пишу цикл «Эфир». Исследую технологии, сознание и будущее. Это питает всё остальное.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 pt-10">
+        <div class="max-w-2xl">
+          <div class="text-xs uppercase tracking-[2px] text-white/50 mb-3">MAVOEX LABS</div>
+          <h2 class="text-4xl tracking-[-1px] font-semibold mb-5">Лаборатория, где всё сходится</h2>
+          <p class="text-white/70 leading-relaxed">Labs — это не просто бренд. Это место, где я развиваю сразу несколько направлений одновременно. Здесь рождаются клиентские проекты, экспериментальные инструменты (Studio) и литературные работы (Press).</p>
+        </div>
+        
+        <div class="mt-8 grid md:grid-cols-2 gap-4">
+          <a href="studio.html" class="card p-8 rounded-3xl group block">
+            <div class="text-xs tracking-[3px] text-white/50 mb-2">DIRECTION 01</div>
+            <div class="text-3xl tracking-[-1px] font-semibold mb-2 group-hover:text-[#3b82f6] transition">MAVEOX STUDIO</div>
+            <p class="text-white/70">Эксперименты с AI, инструменты и цифровые продукты.</p>
+          </a>
+          <a href="press.html" class="card p-8 rounded-3xl group block">
+            <div class="text-xs tracking-[3px] text-white/50 mb-2">DIRECTION 02</div>
+            <div class="text-3xl tracking-[-1px] font-semibold mb-2 group-hover:text-[#3b82f6] transition">MAVEOX PRESS</div>
+            <p class="text-white/70">Книги, тексты и литературные проекты цикла «Эфир».</p>
+          </a>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-white/10">
+        <div class="rounded-3xl border border-white/10 bg-[#111] p-9 md:p-12 flex flex-col md:flex-row md:items-center gap-8">
+          <div class="flex-1">
+            <div class="font-semibold text-2xl tracking-[-0.5px] mb-2">Готовы обсудить проект или просто поговорить?</div>
+            <p class="text-white/60">Напишите в Telegram. Обычно отвечаю быстро.</p>
+          </div>
+          <a href="https://t.me/ercqwern" target="_blank" class="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-3.5 text-sm font-medium active:scale-[0.985] transition whitespace-nowrap">
+            Написать в Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/60 mt-auto">
+    <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-12 gap-y-12">
+        <div class="md:col-span-5">
+          <div class="font-mono text-xs tracking-[4px] text-white/50 mb-3">MAVOEX</div>
+          <div class="text-2xl font-semibold tracking-[-0.5px] mb-4">Михаил Матвеев</div>
+          <p class="max-w-xs text-white/60 text-[15px] leading-relaxed">16 лет. Создаю сайты, продукты, цифровые миры и современные художественные формы.</p>
+          <a href="https://t.me/ercqwern" target="_blank" class="mt-6 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors group">Написать в Telegram</a>
+        </div>
+        <div class="md:col-span-3">
+          <div class="text-xs tracking-[2px] text-white/50 mb-4">НАВИГАЦИЯ</div>
+          <div class="flex flex-col gap-2.5 text-sm">
+            <a href="about.html" class="text-white/70 hover:text-white transition">Обо мне</a>
+            <a href="services.html" class="text-white/70 hover:text-white transition">Услуги</a>
+            <a href="portfolio.html" class="text-white/70 hover:text-white transition">Портфолио</a>
+            <a href="labs.html" class="text-white/70 hover:text-white transition">Maveox Labs</a>
+            <a href="contact.html" class="text-white/70 hover:text-white transition">Связь</a>
+          </div>
+        </div>
+        <div class="md:col-span-4">
+          <div class="text-xs tracking-[2px] text-white/50 mb-4">КОНТАКТЫ</div>
+          <div class="space-y-3 text-sm">
+            <a href="https://t.me/ercqwern" target="_blank" class="block text-white/70 hover:text-white transition">@ercqwern — Telegram (проекты)</a>
+            <a href="https://github.com/erqwern" target="_blank" class="block text-white/70 hover:text-white transition">github.com/erqwern</a>
+            <div onclick="navigator.clipboard.writeText('erqwern@gmail.com'); alert('Почта скопирована')" class="block text-white/70 hover:text-white transition cursor-pointer">erqwern@gmail.com</div>
+          </div>
+          <div class="mt-8 text-[11px] text-white/40">© 2026 Михаил Матвеев · Maveox Labs</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['var(--font-sans)'],
+            'mono': ['var(--font-mono)']
+          }
+        }
+      }
+    };
+
+    // Mobile menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (btn) btn.onclick = () => menu.classList.toggle('hidden');
+  </script>
+</body>
+</html>

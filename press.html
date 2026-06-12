@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press — Mavoex</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    body { font-family: var(--font-sans); }
+    .font-mono { font-family: var(--font-mono); }
+    .card { 
+      background: #161616; 
+      border: 1px solid #222222; 
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14 md:h-16">
+      <a href="index.html" class="font-mono text-sm md:text-[13px] tracking-[3px] text-white/90 hover:text-white transition-colors">MATVEEV.DEV</a>
+      <div class="hidden md:flex items-center gap-9 text-sm">
+        <a href="about.html" class="text-white/70 hover:text-white transition-colors">Обо мне</a>
+        <a href="services.html" class="text-white/70 hover:text-white transition-colors">Услуги</a>
+        <a href="portfolio.html" class="text-white/70 hover:text-white transition-colors">Портфолио</a>
+        <a href="labs.html" class="text-white/70 hover:text-white transition-colors">Labs</a>
+        <a href="contact.html" class="text-white/70 hover:text-white transition-colors">Связь</a>
+      </div>
+      <a href="labs.html" class="hidden md:block text-sm px-5 py-2 rounded-full border border-white/20 hover:bg-white/5 transition-all">Войти в Maveox Labs</a>
+      <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-white/80 hover:text-white p-2">☰</button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-black/95 px-5 py-6 text-lg space-y-4">
+      <a href="about.html" class="block">Обо мне</a><a href="services.html" class="block">Услуги</a><a href="portfolio.html" class="block">Портфолио</a><a href="labs.html" class="block">Labs</a><a href="contact.html" class="block">Связь</a>
+    </div>
+  </nav>
+  <div class="h-14 md:h-16"></div>
+
+  <main class="max-w-5xl mx-auto px-8 pt-20 pb-24">
+    <div class="text-sm tracking-[3px] font-mono text-white/50 mb-4">MAVEOX PRESS</div>
+    <h1 class="text-7xl tracking-[-4.5px] font-semibold mb-4">Книги</h1>
+    <p class="text-xl text-white/70 max-w-md mb-12">Литературные проекты и художественные тексты</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div onclick="showSemyaModal()" class="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 aspect-[16/10] cursor-pointer">
+        <img src="images/books/book1-seed.png" class="object-cover w-full h-full opacity-95 group-hover:scale-[1.02] transition" alt="Семя">
+        <div class="absolute inset-0 bg-black/25"></div>
+        <div class="absolute inset-0 flex flex-col justify-between p-9">
+          <div>
+            <div class="font-mono text-[10px] tracking-[3px] text-white/60 mb-3">КНИГА 1</div>
+            <div class="text-5xl tracking-[-2.8px] font-semibold leading-none mb-2">Семя</div>
+            <p class="text-white/70">The Aether Seed • Книга 1</p>
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm px-6 py-2.5 rounded-full bg-white text-black font-medium w-fit">Выбрать версию</div>
+        </div>
+      </div>
+      
+      <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 aspect-[16/10]">
+        <img src="images/books/book2-fracture.png" class="object-cover w-full h-full opacity-90 blur-[6px] scale-[1.08]">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="absolute inset-0 flex flex-col justify-between p-9">
+          <div>
+            <div class="font-mono text-[10px] tracking-[3px] text-white/60 mb-3">КНИГА 2</div>
+            <div class="text-5xl tracking-[-2.8px] font-semibold leading-none mb-2">Перелом</div>
+            <p class="text-white/70">The Aether Fracture • Книга 2</p>
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm px-6 py-2 rounded-full bg-white/10 text-white/80 w-fit">В разработке</div>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 aspect-[16/10]">
+        <img src="images/books/book3-ascension.png" class="object-cover w-full h-full opacity-90 blur-[6px] scale-[1.08]">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="absolute inset-0 flex flex-col justify-between p-9">
+          <div>
+            <div class="font-mono text-[10px] tracking-[3px] text-white/60 mb-3">КНИГА 3</div>
+            <div class="text-5xl tracking-[-2.8px] font-semibold leading-none mb-2">Вознесение</div>
+            <p class="text-white/70">The Aether Ascension • Книга 3</p>
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm px-6 py-2 rounded-full bg-white/10 text-white/80 w-fit">В разработке</div>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 aspect-[16/10]">
+        <img src="images/books/book4-cradle.png" class="object-cover w-full h-full opacity-90 blur-[6px] scale-[1.08]">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="absolute inset-0 flex flex-col justify-between p-9">
+          <div>
+            <div class="font-mono text-[10px] tracking-[3px] text-white/60 mb-3">КНИГА 4</div>
+            <div class="text-5xl tracking-[-2.8px] font-semibold leading-none mb-2">Колыбель</div>
+            <p class="text-white/70">Aether Cradle • Spin-off</p>
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm px-6 py-2 rounded-full bg-white/10 text-white/80 w-fit">В разработке</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" onclick="document.getElementById('modal').classList.add('hidden')" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-6">
+    <div onclick="event.stopImmediatePropagation()" class="w-full max-w-md rounded-3xl border border-white/10 bg-zinc-950 p-8">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <div class="text-sm text-white/50 tracking-widest">КНИГА 1 • THE AETHER SEED</div>
+          <div class="text-3xl font-semibold tracking-[-0.8px] mt-1">Семя</div>
+        </div>
+        <button onclick="document.getElementById('modal').classList.add('hidden')" class="text-white/50 hover:text-white">✕</button>
+      </div>
+      <p class="text-white/70 text-sm mb-6">Выберите языковую версию книги:</p>
+      <div class="space-y-3">
+        <a href="https://author.today/work/601968" target="_blank" class="block w-full rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 px-6 py-4">Русская версия<br><span class="text-sm text-white/60">Читать на author.today →</span></a>
+        <div class="block w-full rounded-2xl border border-white/10 px-6 py-4 opacity-70">Английская версия — в разработке</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['var(--font-sans)'],
+            'mono': ['var(--font-mono)']
+          }
+        }
+      }
+    };
+
+    function showSemyaModal() { document.getElementById('modal').classList.remove('hidden'); }
+    const btn = document.getElementById('mobile-menu-btn');
+    if (btn) btn.onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+  </script>
+</body>
+</html>

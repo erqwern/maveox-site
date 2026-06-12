@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labs — Mavoex</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    body { font-family: var(--font-sans); }
+    .font-mono { font-family: var(--font-mono); }
+    .card { background: #161616; border: 1px solid #222222; }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14 md:h-16">
+      <a href="index.html" class="font-mono text-sm md:text-[13px] tracking-[3px] text-white/90 hover:text-white transition-colors">MATVEEV.DEV</a>
+      <div class="hidden md:flex items-center gap-9 text-sm">
+        <a href="about.html" class="text-white/70 hover:text-white transition-colors">Обо мне</a>
+        <a href="services.html" class="text-white/70 hover:text-white transition-colors">Услуги</a>
+        <a href="portfolio.html" class="text-white/70 hover:text-white transition-colors">Портфолио</a>
+        <a href="labs.html" class="text-white/70 hover:text-white transition-colors">Labs</a>
+        <a href="contact.html" class="text-white/70 hover:text-white transition-colors">Связь</a>
+      </div>
+      <a href="labs.html" class="hidden md:block text-sm px-5 py-2 rounded-full border border-white/20 hover:bg-white/5 transition-all">Войти в Maveox Labs</a>
+      <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-white/80 hover:text-white p-2">☰</button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-black/95 px-5 py-6 text-lg space-y-4">
+      <a href="about.html" class="block">Обо мне</a><a href="services.html" class="block">Услуги</a><a href="portfolio.html" class="block">Портфолио</a><a href="labs.html" class="block">Labs</a><a href="contact.html" class="block">Связь</a>
+    </div>
+  </nav>
+  <div class="h-14 md:h-16"></div>
+
+  <main class="max-w-5xl mx-auto px-8 pt-20 pb-24">
+    <div class="text-sm tracking-[3px] font-mono text-white/50 mb-4">MAVEOX LABS</div>
+    <h1 class="text-5xl sm:text-6xl md:text-7xl tracking-[-3.5px] sm:tracking-[-4px] md:tracking-[-4.5px] font-semibold mb-10 sm:mb-16">Лаборатория</h1>
+    
+    <div class="grid md:grid-cols-2 gap-5">
+      <a href="studio.html" class="card group h-full rounded-3xl p-8 md:p-10 flex flex-col justify-between min-h-[320px] cursor-pointer">
+        <div>
+          <div class="font-mono text-xs tracking-[4px] text-white/50 mb-6">DIRECTION 01</div>
+          <div class="text-5xl md:text-6xl tracking-[-2.5px] md:tracking-[-3px] font-semibold leading-none mb-4">MAVEOX STUDIO</div>
+          <p class="text-xl text-white/70">Эксперименты с AI, инструменты и цифровые продукты</p>
+        </div>
+        <div class="text-sm text-white/60 group-hover:text-white mt-8">Перейти в Studio →</div>
+      </a>
+      
+      <a href="press.html" class="card group h-full rounded-3xl p-8 md:p-10 flex flex-col justify-between min-h-[320px] cursor-pointer">
+        <div>
+          <div class="font-mono text-xs tracking-[4px] text-white/50 mb-6">DIRECTION 02</div>
+          <div class="text-5xl md:text-6xl tracking-[-2.5px] md:tracking-[-3px] font-semibold leading-none mb-4">MAVEOX PRESS</div>
+          <p class="text-xl text-white/70">Книги, тексты и литературные проекты</p>
+        </div>
+        <div class="text-sm text-white/60 group-hover:text-white mt-8">Перейти в Press →</div>
+      </a>
+    </div>
+  </main>
+  <footer class="border-t border-white/10 bg-black/60 mt-auto py-12 px-6 text-center text-sm text-white/50">© 2026 Mavoex Labs</footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['var(--font-sans)'],
+            'mono': ['var(--font-mono)']
+          }
+        }
+      }
+    };
+  </script>
+</body>
+</html>
